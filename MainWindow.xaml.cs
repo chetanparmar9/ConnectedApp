@@ -95,12 +95,6 @@ namespace WpfApp17
                     });
                     client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(token_type, access_token);
                     responseMsg = await client.GetAsync(instance_url + "/services/data");
-                    //dynamic response_h = responseMsg.Headers;
-                    
-                    //Console.WriteLine(responseMsg.Headers.ElementAt(0).Key);
-                    //Console.WriteLine(responseMsg.Headers.ElementAt(0).Value);
-                    //Console.WriteLine(responseMsg.Headers.ElementAt(1).Key);
-                    //Console.WriteLine(responseMsg.Headers.ElementAt(1).Value);
                     var responseCnt = await responseMsg.Content.ReadAsStringAsync();
                     Dispatcher.Invoke(() =>
                     {
@@ -130,27 +124,6 @@ namespace WpfApp17
                             shadoweffect.Color = (Color)ColorConverter.ConvertFromString("#FFC9C9C9");
                             btn.BitmapEffect = shadoweffect;
                             st_panel.Children.Add(btn);
-                            //st_panel.Height = 45;
-                            //TextBox versionTxt = new TextBox();
-                            //TextBox labelTxt = new TextBox();
-                            //TextBox urlTxt = new TextBox();
-                            //versionTxt.Text = dobj["version"];
-                            //versionTxt.BorderThickness = new Thickness(0, 0, 0, 0);
-                            //versionTxt.VerticalContentAlignment = VerticalAlignment.Center;
-                            //versionTxt.HorizontalAlignment = HorizontalAlignment.Stretch;
-                            //labelTxt.Text = dobj["label"];
-                            //labelTxt.BorderThickness = new Thickness(0, 0, 0, 0);
-                            //labelTxt.VerticalContentAlignment = VerticalAlignment.Center;
-                            //labelTxt.HorizontalAlignment = HorizontalAlignment.Stretch;
-                            //urlTxt.Text = dobj["url"];
-                            //urlTxt.BorderThickness = new Thickness(0, 0, 0, 0);
-                            //urlTxt.VerticalContentAlignment = VerticalAlignment.Center;
-                            //urlTxt.HorizontalAlignment = HorizontalAlignment.Stretch;
-                            //st_panel.Children.Add(versionTxt);
-                            //st_panel.Children.Add(labelTxt);
-                            //st_panel.Children.Add(urlTxt);
-                            //lv.Items.Add(st_panel);
-                            //lv.Items.Add($" {dobj["version"]}     {dobj["version"]}      {dobj["label"]}  ");
                         }
                         resPanel.Children.Add(st_panel);
                        
@@ -167,70 +140,6 @@ namespace WpfApp17
                     });
                 }
             
-
-
-
-                /*
-                 *    //System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 |SecurityProtocolType.Tls;
-                //client.DefaultRequestHeaders.Add("Access-Control-Allow-Origin", "*");
-
-                //string obj = JsonConvert.SerializeObject(new { grant_type = "password", client_id = client_id, client_secret = client_secret, username = usernameTxt.Text, password = passwordTxt.Text + client_secretToken });
-                //StringContent content = new StringContent("new", Encoding.UTF8, "application/text");
-                //content.Headers.Add("grant_type", "password");
-                //content.Headers.Add("client_id", client_id);
-                //content.Headers.Add("client_secret", client_secret);
-                //content.Headers.Add("username", "parmar.chetan91-cckq@force.com");
-                //content.Headers.Add("password", "Chetan@1990Upmb9jZebP1oWPE5yiPPKXUO");
-                 *     HttpRequestMessage req_msg = response.RequestMessage;
-                //https://jsonplaceholder.typicode.com/todos/1;
-                Console.WriteLine(req_msg.Method);
-                //Console.WriteLine(req_msg.RequestUri);
-                Console.WriteLine(req_msg.Headers);
-                    var content = new FormUrlEncodedContent(new[]
-                    {
-                    new KeyValuePair<string, string>("grant_type","password"),
-                    new KeyValuePair<string, string>("client_id", client_id),
-                    new KeyValuePair<string, string>("client_secret", client_secret),
-                    new KeyValuePair<string, string>("username", "parmar.chetan91-cckq@force.com"),
-                    new KeyValuePair<string, string>("password", "Chetan@1990Upmb9jZebP1oWPE5yiPPKXUO")
-                   });
-
-                    var request = new HttpRequestMessage
-                    {
-                        Method = HttpMethod.Post,
-                        RequestUri = new Uri("https://login.salesforce.com/services/oauth2/token"),
-                        Content = content
-                    };
-                    var response = await client.SendAsync(request);
-
-                    //response.EnsureSuccessStatusCode();
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    responseTxt.Text = responseBody;
-                */
-
-                /* method 1{
-                    //client.DefaultRequestHeaders.Add("ContentType", "application/json");
-
-                    // Above three lines can be replaced with new helper method below
-                    // string responseBody = await client.GetStringAsync(uri);
-
-                    ////Console.WriteLine(responseBody);
-                    //string ur
-                    //client.DefaultRequestHeaders.Add("ContentType", "application/json");
-
-                    ////This is the key section you were missing    
-                    //var plainTextBytes = System.Text.Encoding.UTF8.GetBytes("5C428C5D826D14B2C65A605714274A26333AAA20AF29BA1A0667185763569A50");
-                    //string val = Convert.ToBase64String(plainTextBytes);
-                    //client.DefaultRequestHeaders.Add("Authorization", "Bearer " + val);
-
-                    //HttpResponseMessage response = client.GetAsync(url).Result;
-                    //string content = string.Empty;
-
-                    //using (StreamReader stream = new StreamReader(response.Content.ReadAsStreamAsync().Result, System.Text.Encoding.GetEncoding(_encoding)))
-                    //{
-                    //    content = stream.ReadToEnd();
-                    //}
-                }*/
             }
             catch (HttpRequestException ex)
             {
