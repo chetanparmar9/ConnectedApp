@@ -148,18 +148,5 @@ namespace WpfApp17
             }
         }
 
-        private void mouseEnter(object sender, MouseEventArgs e)
-        {
-            Button btn = (Button)sender;
-            Color color = (Color)ColorConverter.ConvertFromString("#FF7BE6A2");
-            btn.Background = new SolidColorBrush(color);
-        }
-
-        private void focus_GotFocus(object sender, RoutedEventArgs e)
-        {
-            Button btn = (Button)sender;
-            Color color = (Color)ColorConverter.ConvertFromString("#FF7BE6A2");
-            btn.Background = new SolidColorBrush(color);
-        }
     }
 }
